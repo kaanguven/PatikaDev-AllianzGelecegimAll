@@ -1,1 +1,12 @@
 <p>category-list works!</p>
+
+<div>
+
+    <ul>
+        <li *ngFor="let category of categories">
+          {{ category.category_id }} - {{ category.name }} - {{category.creation_date}}
+        </li>
+      </ul>
+    
+</div>
+ 
