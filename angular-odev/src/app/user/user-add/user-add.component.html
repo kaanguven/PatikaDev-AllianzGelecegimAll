@@ -1,0 +1,29 @@
+<p>user-add works!</p>
+
+<div>
+
+    <ul>
+        <li *ngFor="let user of users">
+          {{ user.username }} - {{ user.email }}
+        </li>
+      </ul>
+    
+
+</div>
+
+<form (submit)="addUser()">
+    <input type="text" [(ngModel)]="newUser.username" placeholder="Username" [ngModelOptions]="{ standalone: true }">
+    <input type="number" [(ngModel)]="newUser.user_id" placeholder="User ID" [ngModelOptions]="{ standalone: true }">
+    <input type="email" [(ngModel)]="newUser.email" placeholder="Email" [ngModelOptions]="{ standalone: true }">
+    <input type="text" [(ngModel)]="newUser.creation_date" placeholder="Creation Date" [ngModelOptions]="{ standalone: true }">
+    <input type="checkbox" [(ngModel)]="newUser.is_active" [ngModelOptions]="{ standalone: true }">
+    <button type="submit">Add User</button>
+  </form>
+  
+  
+  <ul>
+    <li *ngFor="let user of users">
+      {{ user.username }}
+      <button (click)="removeUser(user)">Remove</button>
+    </li>
+  </ul>
