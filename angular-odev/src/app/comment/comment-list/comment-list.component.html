@@ -1,7 +1,7 @@
 <p>comment-list works!</p>
 
 
-<div>
+<!-- <div>
 
     <ul>
         <li *ngFor="let comment of comments">
@@ -9,5 +9,6 @@
         </li>
       </ul>
     
-</div>
- 
+</div> -->
+
+<app-table [data]="comments" [columns]="['comment_id', 'user_id', 'comment']"></app-table>

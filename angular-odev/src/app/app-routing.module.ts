@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryListComponent } from './category-list/category-list.component';
-import { CommentListComponent } from './comment-list/comment-list.component';
-import { PostListComponent } from './post-list/post-list.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CommentListComponent } from './comment/comment-list/comment-list.component';
+import { PostListComponent } from './post/post-list/post-list.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserAddComponent } from './user/user-add/user-add.component';

@@ -1,13 +1,32 @@
 
 <p>ben user list deneme!</p>
-<div>
 
-    <ul>
-        <li *ngFor="let user of users">
-          {{ user.username }} - {{ user.email }}
-        </li>
-      </ul>
+<!-- <div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Creation Date</th>
+        <th>Active</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.user_id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.creation_date }}</td>
+        <td>{{ user.is_active ? 'Active' : 'Inactive' }}</td>
+      </tr>
+    </tbody>
+  </table>
     
-</div>
+</div> -->
+
+
+<app-table [data]="users" [columns]="['user_id', 'username', 'email', 'creation_date', 'is_active']"></app-table>
  
 <a routerLink="/user-add" routerLinkActive="active" ariaCurrentWhenActive="page">COMasdaassdMENTS</a>

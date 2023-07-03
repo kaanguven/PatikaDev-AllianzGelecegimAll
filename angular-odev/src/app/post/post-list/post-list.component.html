@@ -1,0 +1,21 @@
+<p>post-list works!</p>
+<!-- <div>
+
+    <ul>
+        <li *ngFor="let post of posts">
+          {{ post.post_id }} - {{ post.title }}
+        </li>
+        <li *ngFor="let post of posts">
+          {{ post.post_id }} - {{ post.title }}
+        </li>
+      </ul>
+    
+
+      
+</div> -->
+
+<app-table [data]="posts" [columns]="['post_id', 'title']"></app-table>
+
+
+
+ 

@@ -1,6 +1,5 @@
 <p>category-list works!</p>
-
-<div>
+<!-- <div>
 
     <ul>
         <li *ngFor="let category of categories">
@@ -8,5 +7,6 @@
         </li>
       </ul>
     
-</div>
+</div> -->
  
+<app-table [data]="categories" [columns]="['category_id', 'name', 'creation_date']"></app-table>
