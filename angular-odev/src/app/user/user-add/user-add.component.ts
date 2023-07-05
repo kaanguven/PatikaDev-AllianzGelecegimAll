@@ -16,6 +16,7 @@ export class UserAddComponent implements OnInit {
   newUser: Users = {} as Users;
   comments: Comments[] = [];
   posts: Posts[] = [];
+  editingUser: Users | null = null;
 
   
   constructor(private userService: UserService,
@@ -70,5 +71,30 @@ private checkUserHasPosts(userId: number): boolean {
 private checkUserHasComments(userId: number): boolean {
   const userComments = this.comments.filter(comment => comment.user_id === userId);
   return userComments.length > 0;
+}
+
+editUser(user: Users): void {
+  this.editingUser = { ...user };
+}
+
+updateUser(): void {
+  if (this.editingUser) {
+    const index = this.users.findIndex(user => user.user_id === this.editingUser?.user_id);
+    if (index !== -1) {
+      const updatedUser: Users = {
+        ...this.users[index],
+        username: this.editingUser.username,
+        email: this.editingUser.email
+      };
+      this.users[index] = updatedUser;
+      this.editingUser = null;
+    }
+  }
+}
+
+
+
+cancelEdit(): void {
+  this.editingUser = null;
 }
 }

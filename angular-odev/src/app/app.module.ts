@@ -10,12 +10,12 @@ import { SharedModuleModule } from './shared-module/shared-module.module';
 import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 import { CategoryModule } from './category/category.module';
-
+import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

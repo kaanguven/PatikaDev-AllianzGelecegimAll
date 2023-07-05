@@ -2054,5 +2054,12 @@ export class CommentService {
   getComments() {
     return this.commentList;
   }
+  
+  getCommentsByPostId(postId: number): string[] {
+    const postComments = this.commentList
+      .filter(comment => comment.post_id === postId)
+      .map(comment => comment.comment);
+    return postComments;
+  }
 
 }

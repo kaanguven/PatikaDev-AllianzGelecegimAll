@@ -1,14 +1,1 @@
-<p>comment-list works!</p>
-
-
-<!-- <div>
-
-    <ul>
-        <li *ngFor="let comment of comments">
-          {{ comment.comment_id }} - {{ comment.user_id }} - {{comment.comment}}
-        </li>
-      </ul>
-    
-</div> -->
-
 <app-table [data]="comments" [columns]="['comment_id', 'user_id', 'comment']"></app-table>

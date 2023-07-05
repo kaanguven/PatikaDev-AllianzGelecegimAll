@@ -25,6 +25,8 @@
     <li *ngFor="let user of users">
       {{ user.username }}
       <button (click)="removeUser(user)">Remove</button>
+      <button (click)="editUser(user)">Edit User</button>  
+
     </li>
   </ul>
 
@@ -35,3 +37,13 @@
       <p>{{ user.email }}</p>
     </div>
   </div> -->
+
+  <div *ngIf="editingUser">
+    <h3>Edit User</h3>
+    <form (submit)="updateUser()">
+      <input type="text" [(ngModel)]="editingUser.username" placeholder="Username" [ngModelOptions]="{ standalone: true }">
+      <input type="email" [(ngModel)]="editingUser.email" placeholder="Email" [ngModelOptions]="{ standalone: true }">
+      <button type="submit">Update User</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+  </div>

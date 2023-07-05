@@ -1,0 +1,85 @@
+<h2>Add New Post</h2>
+
+<div>
+  <ul>
+    <li *ngFor="let post of posts">
+      {{ post.post_id }} - {{ post.title }}
+    </li>
+  </ul>
+</div>
+
+<form (ngSubmit)="addPost()">
+  <div>
+    <label>Title:</label>
+    <input type="text" [(ngModel)]="newPost.title" name="title" required>
+  </div>
+  <div>
+    <label>Content:</label>
+    <textarea [(ngModel)]="newPost.content" name="content" required></textarea>
+  </div>
+  <div>
+    <label>User:</label>
+    <select [(ngModel)]="newPost.user_id" name="user_id" required>
+      <option *ngFor="let user of users" [value]="user.user_id">{{ user.username }}</option>
+    </select>
+  </div>
+  <div>
+    <label>Category:</label>
+    <input type="number" [(ngModel)]="newPost.category_id" name="category_id" required>
+  </div>
+  <div>
+    <label>Creation Date:</label>
+    <input type="text" [(ngModel)]="newPost.creation_date" name="creation_date" required>
+  </div>
+  <div>
+    <label>Published:</label>
+    <input type="checkbox" [(ngModel)]="newPost.is_published" name="is_published">
+  </div>
+  <div>
+    <button type="submit">Add Post</button>
+    <button type="button" (click)="resetForm()">Reset</button>
+  </div>
+</form>
+
+<ng-container *ngFor="let post of posts">
+  <div>
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.content }}</p>
+    <button (click)="editPost(post.post_id)">Edit</button>
+    <button (click)="deletePost(post.post_id)">Delete</button>
+  </div>
+  <div *ngIf="selectedPostId === post.post_id">
+    <form (submit)="updatePost(post)">
+      <div>
+        <label>Title:</label>
+        <input type="text" [(ngModel)]="post.title" name="title" required>
+      </div>
+      <div>
+        <label>Content:</label>
+        <textarea [(ngModel)]="post.content" name="content" required></textarea>
+      </div>
+      <div>
+        <label>User:</label>
+        <select [(ngModel)]="post.user_id" name="user_id" required>
+          <option *ngFor="let user of users" [value]="user.user_id">{{ user.username }}</option>
+        </select>
+      </div>
+      <div>
+        <label>Category:</label>
+        <input type="number" [(ngModel)]="post.category_id" name="category_id" required>
+      </div>
+      <div>
+        <label>Creation Date:</label>
+        <input type="text" [(ngModel)]="post.creation_date" name="creation_date" required>
+      </div>
+      <div>
+        <label>Published:</label>
+        <input type="checkbox" [(ngModel)]="post.is_published" name="is_published">
+      </div>
+      <div>
+        <button type="submit">Update</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <hr>

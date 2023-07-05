@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Posts } from './post';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -567,4 +566,37 @@ export class PostService {
       return this.postList;
    }
 
+   addPost(post: Posts): void {
+    // Add validation or other logic before adding the post
+    this.postList.push(post);
+  }
+
+  updatePost(post: Posts): void {
+    const index = this.postList.findIndex(p => p.post_id === post.post_id);
+    if (index !== -1) {
+      // Add validation or other logic before updating the post
+      this.postList[index] = post;
+    }
+  }
+
+  deletePost(postId: number): void {
+    const index = this.postList.findIndex(post => post.post_id === postId);
+    if (index !== -1) {
+      this.postList.splice(index, 1);
+    }
+  }
+  getPostCountByCategory(categoryId: number): number {
+    const filteredPosts = this.postList.filter(post => post.category_id === categoryId).length;
+    return filteredPosts;
+   
+  }
+  getPostContent(postId: number): string {
+    const post = this.postList.find(post => post.post_id === postId);
+    return post ? post.content : '';
+  }
+  
+
+  
+  
+  
 }

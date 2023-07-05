@@ -1,21 +1,8 @@
-<p>post-list works!</p>
-<!-- <div>
-
-    <ul>
-        <li *ngFor="let post of posts">
-          {{ post.post_id }} - {{ post.title }}
-        </li>
-        <li *ngFor="let post of posts">
-          {{ post.post_id }} - {{ post.title }}
-        </li>
-      </ul>
-    
-
-      
-</div> -->
-
 <app-table [data]="posts" [columns]="['post_id', 'title']"></app-table>
+<h1><a routerLink="/post-add" routerLinkActive="active" ariaCurrentWhenActive="page">ADD POST</a></h1>
+<ng-container *ngFor="let post of posts">
+  <div>{{ post.title }}</div>
+  <button (click)="showDetails(post.user_id, post.post_id)">Show User ID</button>
+  <hr>
+</ng-container>
 
-
-
- 

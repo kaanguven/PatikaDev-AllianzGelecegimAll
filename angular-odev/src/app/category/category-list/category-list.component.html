@@ -1,12 +1,8 @@
-<p>category-list works!</p>
-<!-- <div>
-
-    <ul>
-        <li *ngFor="let category of categories">
-          {{ category.category_id }} - {{ category.name }} - {{category.creation_date}}
-        </li>
-      </ul>
+<app-table [data]="categories" [columns]="['category_id', 'name', 'creation_date']">
     
-</div> -->
- 
-<app-table [data]="categories" [columns]="['category_id', 'name', 'creation_date']"></app-table>
+  </app-table>
+  <ng-container *ngFor="let item of categories">
+    <td>
+      <button (click)="goToCategoryDetail(item.category_id)">Detay Göster</button>
+    </td>
+  </ng-container>

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Categories } from './category';
-
+import { Posts } from 'src/app/post/post-list/post';
+import { PostService } from 'src/app/post/post-list/post.service';
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-
-  constructor() { }
-
+  constructor(private postService: PostService) { }
   private categoryList : Categories[] = [
       {
         category_id: 1,
@@ -34,4 +33,10 @@ export class CategoryService {
     getCategories() {
       return this.categoryList;
     }
+
+    getPostCount(categoryId: number): number {
+
+      return this.postService.getPostCountByCategory(categoryId);
+    }
+    
 }

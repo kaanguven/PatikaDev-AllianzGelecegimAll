@@ -1,0 +1,15 @@
+    <h2>Post Content:</h2>
+    <p>{{ postContent }}</p>
+  
+    <h2>Username:</h2>
+    <p>{{ username }}</p>
+  
+    <div>
+        <h2>Comments:</h2>
+        <ul>
+          <li *ngFor="let comment of comments">
+            <p>Comment: {{ comment }}</p>
+          </li>
+        </ul>
+      </div>
+  
