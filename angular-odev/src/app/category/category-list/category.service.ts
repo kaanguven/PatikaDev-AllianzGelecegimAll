@@ -34,9 +34,22 @@ export class CategoryService {
       return this.categoryList;
     }
 
+
+    addCategory(category: Categories) {
+      this.categoryList.push(category);
+    }
     getPostCount(categoryId: number): number {
 
       return this.postService.getPostCountByCategory(categoryId);
     }
+
+    getCategoryByPostId(postId: number): string {
+      const category = this.categoryList.find(category => category.category_id === postId);
+      return category ? category.name : '';
+    }
     
+    getCategoryName(categoryId: number): string {
+      const category = this.categoryList.find(category => category.category_id === categoryId);
+      return category ? category.name : '';
+    }
 }

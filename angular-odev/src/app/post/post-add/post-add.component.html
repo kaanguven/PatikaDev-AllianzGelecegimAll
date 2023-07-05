@@ -1,5 +1,4 @@
 <h2>Add New Post</h2>
-
 <div>
   <ul>
     <li *ngFor="let post of posts">
@@ -29,7 +28,7 @@
   </div>
   <div>
     <label>Creation Date:</label>
-    <input type="text" [(ngModel)]="newPost.creation_date" name="creation_date" required>
+    <span>{{ getCurrentDate() }}</span>
   </div>
   <div>
     <label>Published:</label>

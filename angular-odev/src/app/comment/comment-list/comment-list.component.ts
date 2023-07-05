@@ -17,6 +17,15 @@ export class CommentListComponent implements OnInit {
      this.comments = this.commentService.getComments();
  }
 
+ deleteComment(commentId: number): void {
+  // CommentId'ye göre yorumu bulup listeden kaldırabilirsiniz
+  const index = this.comments.findIndex(comment => comment.comment_id === commentId);
+  if (index !== -1) {
+    this.comments.splice(index, 1);
+  }
+}
+ 
+
 
 
 }

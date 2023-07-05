@@ -1,1 +1,8 @@
-<app-table [data]="comments" [columns]="['comment_id', 'user_id', 'comment']"></app-table>
+<a routerLink="/comment-add" routerLinkActive="active" ariaCurrentWhenActive="page">ADD COMMENT</a>
+
+<app-table [data]="comments" [columns]="['comment_id', 'post_id', 'comment']"></app-table>
+
+<div *ngFor="let comment of comments">
+    <p>{{ comment.comment }}</p>
+    <button (click)="deleteComment(comment.comment_id)">Delete Comment</button>
+  </div>

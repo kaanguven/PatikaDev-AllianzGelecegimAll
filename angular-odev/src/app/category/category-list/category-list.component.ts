@@ -26,7 +26,7 @@ export class CategoryListComponent implements OnInit {
   
 
   goToCategoryDetail(categoryId: number): void {
-    this.router.navigate(['/category-detail', categoryId]);
+    this.router.navigate(['/category-detail', categoryId], { state: { categoryId } });
   }
 
 

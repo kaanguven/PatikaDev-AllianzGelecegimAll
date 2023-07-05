@@ -1,4 +1,4 @@
-<app-table [data]="posts" [columns]="['post_id', 'title']"></app-table>
+<app-table [data]="posts" [columns]="['post_id', 'user_id' ,'category_id','title']"></app-table>
 <h1><a routerLink="/post-add" routerLinkActive="active" ariaCurrentWhenActive="page">ADD POST</a></h1>
 <ng-container *ngFor="let post of posts">
   <div>{{ post.title }}</div>

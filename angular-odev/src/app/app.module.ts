@@ -11,11 +11,17 @@ import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 import { CategoryModule } from './category/category.module';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
+import { CategoryPostsComponent } from './category/category-posts/category-posts.component';
+import { CommentAddComponent } from './comment/comment-add/comment-add.component';
+import { CategoryAddComponent } from './category/category-add/category-add.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     NotFoundComponent,
+    CategoryPostsComponent,
+    CommentAddComponent,
+    CategoryAddComponent,
   ],
   imports: [
     BrowserModule,

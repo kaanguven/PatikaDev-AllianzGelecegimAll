@@ -17,14 +17,19 @@ import { ActivatedRoute } from '@angular/router';
 export class CategoryDetailComponent implements OnInit {
   post_count!: number;
   categories : Categories[] = []
-
-  constructor(private route: ActivatedRoute,private categoryService: CategoryService,) { }
+  categoryId: number = 0;
+  constructor(private route: ActivatedRoute,private categoryService: CategoryService,private router: Router) { }
 
   ngOnInit(): void {
     this.categories = this.categoryService.getCategories();
     this.route.paramMap.subscribe(params => {
-      const categoryId = +params.get('id')!;
-      this.post_count = this.categoryService.getPostCount(categoryId);
+      this.categoryId = +params.get('id')!;
+      this.post_count = this.categoryService.getPostCount(this.categoryId);
     });
   }
+
+  postsBelongCategory(categoryId: number): void {
+    this.router.navigate(['category-detail/category-posts', this.categoryId]);
+  }
+
 }

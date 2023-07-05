@@ -9,8 +9,14 @@ import { UserAddComponent } from './user/user-add/user-add.component';
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
 import { PostAddComponent } from './post/post-add/post-add.component';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
+import { CategoryPostsComponent } from './category/category-posts/category-posts.component';
+import { CommentAddComponent } from './comment/comment-add/comment-add.component';
+import { CategoryAddComponent } from './category/category-add/category-add.component';
+
 const routes: Routes = [
   { path: 'user-list', component: UserListComponent },
+  { path: 'comment-add', component: CommentAddComponent },
+  { path: 'category-add', component: CategoryAddComponent },
   { path: 'post-detail/:id', component: PostDetailComponent },
   { path : '', redirectTo: 'user-list',pathMatch: 'full'},
   { path: 'category-list', component: CategoryListComponent },
@@ -19,6 +25,7 @@ const routes: Routes = [
   { path: 'user-add', component: UserAddComponent },
   { path: 'post-add', component: PostAddComponent },
   { path: 'category-detail/:id', component: CategoryDetailComponent },
+  { path: 'category-detail/category-posts/:id', component: CategoryPostsComponent },
   { path: '**', component:NotFoundComponent},
   
 ];

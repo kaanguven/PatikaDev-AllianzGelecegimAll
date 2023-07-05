@@ -6,6 +6,7 @@ import { Users } from 'src/app/user/user-list/user';
 import { UserService } from 'src/app/user/user.service';
 import { Comments } from 'src/app/comment/comment-list/comment';
 import { CommentService } from 'src/app/comment/comment-list/comment.service';
+import { CategoryService } from 'src/app/category/category-list/category.service';
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
@@ -19,11 +20,13 @@ export class PostDetailComponent {
   username!: string;
   postContent!: string;
   comments: string[] = []; 
+  category!: string
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
     private userService: UserService,
     private commentService: CommentService,
+    private categoryService: CategoryService,
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +38,8 @@ export class PostDetailComponent {
       this.username = this.userService.getUserName(this.userId);
       this.postContent = this.postService.getPostContent(this.postId);
       this.comments =this.commentService.getCommentsByPostId(this.postId)
+      const categoryId = this.postService.getCategoryId(this.postId);
+      this.category = this.categoryService.getCategoryName(categoryId);
       console.log(this.comments)
     });
   }

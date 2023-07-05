@@ -567,7 +567,7 @@ export class PostService {
    }
 
    addPost(post: Posts): void {
-    // Add validation or other logic before adding the post
+    post.post_id = this.generatePostId()
     this.postList.push(post);
   }
 
@@ -595,7 +595,25 @@ export class PostService {
     return post ? post.content : '';
   }
   
+  getPostsByCategoryId(categoryId: number): string[] {
+    const posts = this.postList.filter(post => post.category_id === categoryId);
+    return posts.map(post => post.title);
+  }
+  
+  getCategoryId(postId: number): number {
+    const post = this.postList.find(post => post.post_id === postId);
+    return post ? post.category_id : 0;
+  }
 
+  generatePostId(): number {
+    let maxId = 0;
+    for (const post of this.postList) {
+      if (post.post_id > maxId) {
+        maxId = post.post_id;
+      }
+    }
+    return maxId + 1;
+  }
   
   
   

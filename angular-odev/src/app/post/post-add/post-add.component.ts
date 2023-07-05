@@ -30,7 +30,13 @@ export class PostAddComponent {
   selectedPostId: number | null = null;
   isEditing = false;
   comments: Comments[] = [];
-  constructor(private postService: PostService, private userService: UserService,private commentService: CommentService) {}
+  constructor(private postService: PostService, private userService: UserService,private commentService: CommentService) {
+
+    this.getCurrentDate();
+    setInterval(() => {
+      this.getCurrentDate();
+    }, 1000);
+  }
 
   ngOnInit(): void {
     this.users = this.userService.getUsers();
@@ -54,7 +60,7 @@ export class PostAddComponent {
       title: '',
       content: '',
       view_count: 0,
-      creation_date: '',
+      creation_date: Date().toLocaleString(),
       is_published: false
     };
   }
@@ -62,6 +68,10 @@ export class PostAddComponent {
   editPost(postId: number): void {
     this.isEditing = true;
     this.selectedPostId = postId;
+  }
+
+  getCurrentDate(): string {
+    return new Date().toLocaleString();
   }
 
   updatePost(post: Posts): void {

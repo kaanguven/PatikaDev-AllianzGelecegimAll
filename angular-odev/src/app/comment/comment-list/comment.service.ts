@@ -2062,4 +2062,28 @@ export class CommentService {
     return postComments;
   }
 
+  
+
+  addComment(postId: number, commentText: string): void {
+    const newComment: Comments = {
+      comment_id: this.generateCommentId(),
+      post_id: postId,
+      comment: commentText,
+      user_id: 0, // Kullanıcı kimliğini burada belirleyebilirsiniz veya uygun bir değer atayabilirsiniz
+      creation_date: new Date().toISOString(), // Yorumun oluşturulma tarihini burada belirleyebilirsiniz veya uygun bir değer atayabilirsiniz
+      is_confirmed: false // Yorumun onay durumunu burada belirleyebilirsiniz veya uygun bir değer atayabilirsiniz
+    };
+    this.commentList.push(newComment);
+  }
+
+  generateCommentId(): number {
+    let maxId = 0;
+    for (const comment of this.commentList) {
+      if (comment.comment_id > maxId) {
+        maxId = comment.comment_id;
+      }
+    }
+    return maxId + 1;
+  }
+
 }
