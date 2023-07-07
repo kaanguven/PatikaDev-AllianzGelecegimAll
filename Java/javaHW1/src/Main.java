@@ -44,7 +44,6 @@ public class Main {
         classroom1E.add("Emre Baran Yılmaz");
         classroom1E.add("Yılmaz Serkan Şahin");
 
-
         // Add classrooms to the HashMap
         classes.put("1/A", classroom1A);
         classes.put("1/B", classroom1B);
@@ -55,14 +54,12 @@ public class Main {
         // Get the keys (classroom names) from the HashMap
         Set<String> keySet = classes.keySet();
 
-
         // Iterate over the classrooms
         for (String key : keySet) {
             // Iterate over the student names in each classroom
             classes.get(key).forEach(name ->
                     {
                         String[] studentNameArray = name.split(" ");
-
                         // Iterate over each name Exclude the surname
                         for (int i = 0; i < studentNameArray.length - 1; i++) {
                             // Print the class name, student name, and the name that matches the condition
@@ -70,9 +67,6 @@ public class Main {
                                 System.out.println("Classroom: " + key + " - Student Name: " + name+ " --> Name that matches: "+studentNameArray[i]);
                             }
                         }
-
-
-
                     }
             );
         }
