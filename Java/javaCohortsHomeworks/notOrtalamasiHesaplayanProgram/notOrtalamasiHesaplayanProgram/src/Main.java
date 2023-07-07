@@ -35,6 +35,7 @@ public class Main {
         double avg = toplam / 6;
 
         System.out.println("Derslerin ortalaması: "+avg);
+        System.out.println(avg < 60 ? "Kaldınız" : "Geçtiniz");
 
         }
     }
