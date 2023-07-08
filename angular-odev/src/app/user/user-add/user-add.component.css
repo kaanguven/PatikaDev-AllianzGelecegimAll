@@ -1,0 +1,59 @@
+/* Styles for the container div */
+div {
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for the user list */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Styles for each user item in the list */
+  li {
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for the form */
+  form {
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for the form inputs */
+  input {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  /* Styles for the submit button */
+  button[type="submit"] {
+    margin-top: 10px;
+  }
+  
+  /* Styles for the associated user list */
+  ul.associated-users {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for each associated user item in the list */
+  ul.associated-users li {
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for the editing user section */
+  div.editing-user {
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for the editing user form */
+  div.editing-user form {
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for the editing user buttons */
+  div.editing-user form app-button {
+    margin-right: 10px;
+  }
+  

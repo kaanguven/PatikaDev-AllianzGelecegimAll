@@ -1,0 +1,25 @@
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Style for the table header */
+  thead th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  /* Style for the table body */
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style for alternating rows */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  

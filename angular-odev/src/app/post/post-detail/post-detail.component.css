@@ -1,0 +1,28 @@
+/* Styles for headings */
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  /* Styles for paragraphs */
+  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for the comments section */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for comment paragraphs */
+  li p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  

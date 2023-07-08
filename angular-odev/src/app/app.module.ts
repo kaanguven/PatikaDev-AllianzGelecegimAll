@@ -14,6 +14,8 @@ import { CategoryDetailComponent } from './category/category-detail/category-det
 import { CategoryPostsComponent } from './category/category-posts/category-posts.component';
 import { CommentAddComponent } from './comment/comment-add/comment-add.component';
 import { CategoryAddComponent } from './category/category-add/category-add.component';
+import { CommentDetailComponent } from './comment/comment-detail/comment-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,7 @@ import { CategoryAddComponent } from './category/category-add/category-add.compo
     CategoryPostsComponent,
     CommentAddComponent,
     CategoryAddComponent,
+    CommentDetailComponent,
   ],
   imports: [
     BrowserModule,

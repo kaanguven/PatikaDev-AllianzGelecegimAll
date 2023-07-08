@@ -5,6 +5,7 @@ import { Comments } from 'src/app/comment/comment-list/comment';
 import { CommentService } from 'src/app/comment/comment-list/comment.service';
 import { Posts } from 'src/app/post/post-list/post';
 import { PostService } from 'src/app/post/post-list/post.service';
+import { ButtonComponent } from 'src/app/shared-module/button/button.component';
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add.component.html',

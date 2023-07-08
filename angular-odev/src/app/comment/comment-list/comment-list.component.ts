@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Comments } from './comment';
 import { CommentService } from './comment.service';
+import { PostService } from 'src/app/post/post-list/post.service';
+import { Posts } from 'src/app/post/post-list/post';
 @Component({
   selector: 'app-comment-list',
   templateUrl: './comment-list.component.html',
@@ -10,20 +12,15 @@ export class CommentListComponent implements OnInit {
 
   comments : Comments[] = [];
 
-  constructor(private commentService: CommentService){
+  constructor(private commentService: CommentService,private postService: PostService){
 
   }
  ngOnInit(): void {
      this.comments = this.commentService.getComments();
  }
 
- deleteComment(commentId: number): void {
-  // CommentId'ye göre yorumu bulup listeden kaldırabilirsiniz
-  const index = this.comments.findIndex(comment => comment.comment_id === commentId);
-  if (index !== -1) {
-    this.comments.splice(index, 1);
-  }
-}
+
+
  
 
 

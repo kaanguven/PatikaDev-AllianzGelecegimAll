@@ -35,17 +35,17 @@
     <input type="checkbox" [(ngModel)]="newPost.is_published" name="is_published">
   </div>
   <div>
-    <button type="submit">Add Post</button>
-    <button type="button" (click)="resetForm()">Reset</button>
+    <app-button type="submit">Add Post</app-button>
+    
   </div>
 </form>
-
+<app-button type="app-button" (click)="resetForm()">Reset</app-button>
 <ng-container *ngFor="let post of posts">
   <div>
     <h3>{{ post.title }}</h3>
     <p>{{ post.content }}</p>
-    <button (click)="editPost(post.post_id)">Edit</button>
-    <button (click)="deletePost(post.post_id)">Delete</button>
+    <app-button (click)="editPost(post.post_id)">Edit</app-button>
+    <app-button (click)="deletePost(post.post_id)">Delete</app-button>
   </div>
   <div *ngIf="selectedPostId === post.post_id">
     <form (submit)="updatePost(post)">
@@ -76,8 +76,8 @@
         <input type="checkbox" [(ngModel)]="post.is_published" name="is_published">
       </div>
       <div>
-        <button type="submit">Update</button>
-        <button type="button" (click)="cancelEdit()">Cancel</button>
+        <app-button type="submit">Update</app-button>
+        <app-button type="app-button" (click)="cancelEdit()">Cancel</app-button>
       </div>
     </form>
   </div>

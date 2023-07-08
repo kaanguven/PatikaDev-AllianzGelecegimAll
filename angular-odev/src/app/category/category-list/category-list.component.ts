@@ -14,6 +14,7 @@ import { PostService } from 'src/app/post/post-list/post.service';
 export class CategoryListComponent implements OnInit {
 
     categories : Categories[] = []
+    editingCategories: Categories | null = null;
     constructor(
       private categoryService: CategoryService,
       private postService: PostService,
@@ -30,4 +31,31 @@ export class CategoryListComponent implements OnInit {
   }
 
 
-}
+  editCategory(category: Categories): void {
+    this.editingCategories = { ...category };
+  }
+  
+  updateCategory(): void {
+    if (this.editingCategories) {
+      const index = this.categories.findIndex(category => category.category_id === this.editingCategories?.category_id
+        );
+      if (index !== -1) {
+        const updatedCategory: Categories = {
+          ...this.categories[index],
+          name: this.editingCategories.name,
+         
+        };
+        this.categories[index] = updatedCategory;
+        this.editingCategories = null;
+      }
+    }
+  }
+  
+  
+  
+  cancelEdit(): void {
+    this.editingCategories = null;
+  }
+  }
+
+

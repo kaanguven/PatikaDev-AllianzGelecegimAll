@@ -90,7 +90,7 @@ export class UserService {
     return this.userList;
  }
 
- getUserName(userId: number): string {
+ getUserName(userId: number | null): string {
   const user = this.userList.find(user => user.user_id === userId);
   return user ? user.username : '';
 }

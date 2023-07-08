@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Comments } from './comment';
-
+import { UserService } from 'src/app/user/user.service';
+import { Users } from 'src/app/user/user-list/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -2085,5 +2086,14 @@ export class CommentService {
     }
     return maxId + 1;
   }
+
+  
+  getUserIDByCommentID(commentID: number | null): any {
+    const comment = this.commentList.find((comment) => comment.comment_id === commentID);
+    return comment ? comment.user_id : null;
+  }
+  
+
+  
 
 }

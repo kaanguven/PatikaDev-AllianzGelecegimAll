@@ -1,0 +1,62 @@
+/* Style for the select dropdown */
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px;
+    height: 120px;
+    overflow-y: scroll;
+  }
+  
+  /* Style for the filter input container */
+  div {
+    margin-top: 10px;
+  }
+  
+  /* Style for the filter label */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Style for the filter input */
+  input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px;
+  }
+  
+  
+  
+  /* Style for the "Add Post" heading */
+  h1 {
+    margin-top: 20px;
+  }
+  
+  /* Style for the post title */
+  div {
+    margin-top: 10px;
+  }
+  
+
+  /* Style for the "ADD USER" link */
+  h1 a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  /* Style for the "ADD USER" link on hover */
+  h1 a:hover {
+    background-color: #45a049;
+  }
+  

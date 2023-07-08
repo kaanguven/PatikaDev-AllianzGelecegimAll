@@ -1,10 +1,16 @@
-<app-table [data]="categories" [columns]="['category_id', 'name', 'creation_date']">
-    
-  </app-table>
-  <ng-container *ngFor="let item of categories">
-    <td>
-      <button (click)="goToCategoryDetail(item.category_id)">Detay Göster</button>
-    </td>
-  </ng-container>
+<app-table [data]="categories" [columns]="['category_id', 'name', 'creation_date', 'Category Details', 'Edit Category']"
+  (editCategoryClicked)="editCategory($event)">
+</app-table>
 
-  <h1><a routerLink="/category-add" routerLinkActive="active" ariaCurrentWhenActive="page">ADD CATEGORY</a></h1>
+
+
+<div *ngIf="editingCategories">
+  <h3>Edit User</h3>
+  <form (submit)="updateCategory()">
+    <input type="text" [(ngModel)]="editingCategories.name" placeholder="Username" [ngModelOptions]="{ standalone: true }">
+    <app-button type="submit">Update Category</app-button>
+    <app-button type="app-button" (click)="cancelEdit()">Cancel</app-button>
+  </form>
+</div>
+
+<h1><a routerLink="/category-add" routerLinkActive="active" ariaCurrentWhenActive="page">ADD CATEGORY</a></h1>

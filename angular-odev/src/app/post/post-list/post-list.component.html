@@ -1,8 +1,25 @@
-<app-table [data]="posts" [columns]="['post_id', 'user_id' ,'category_id','title']"></app-table>
-<h1><a routerLink="/post-add" routerLinkActive="active" ariaCurrentWhenActive="page">ADD POST</a></h1>
-<ng-container *ngFor="let post of posts">
-  <div>{{ post.title }}</div>
-  <button (click)="showDetails(post.user_id, post.post_id)">Show User ID</button>
-  <hr>
-</ng-container>
 
+<select [(ngModel)]="selectedFilters" multiple>
+  <option [ngValue]="null">All</option>
+  <option *ngFor="let option of filterOptions" [ngValue]="option">{{ option }}</option>
+</select>
+
+<app-button (click)="applyFilter()">Apply</app-button>
+
+<div *ngFor="let filter of selectedFilters">
+  <div>
+    <label>{{ filter }}</label>
+    <input type="number" [(ngModel)]="filterValues[filter]" [placeholder]="'Enter filter value'">
+  </div>
+</div>
+
+<app-table [data]="filteredPosts" [columns]="['post_id', 'user_id', 'category_id', 'title','Post Details']"></app-table>
+
+<!-- ... -->
+
+<h1><a routerLink="/post-add" routerLinkActive="active" ariaCurrentWhenActive="page">ADD POST</a></h1>
+<!-- <ng-container *ngFor="let post of posts">
+  <div>{{ post.title }}</div>
+  <app-button (click)="showDetails(post.user_id, post.post_id)">Show User ID</app-button>
+  <hr>
+</ng-container> -->

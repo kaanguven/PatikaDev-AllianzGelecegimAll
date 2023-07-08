@@ -45,6 +45,7 @@ export class PostAddComponent {
   }
 
   addPost(): void {
+    console.log("burada2")
     // Add validation or other logic before adding the post
     this.postService.addPost(this.newPost);
     
@@ -53,6 +54,7 @@ export class PostAddComponent {
   }
 
   resetForm(): void {
+      console.log("burada1")
     this.newPost = {
       post_id: 0,
       user_id: 0,

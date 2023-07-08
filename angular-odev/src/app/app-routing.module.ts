@@ -12,8 +12,9 @@ import { CategoryDetailComponent } from './category/category-detail/category-det
 import { CategoryPostsComponent } from './category/category-posts/category-posts.component';
 import { CommentAddComponent } from './comment/comment-add/comment-add.component';
 import { CategoryAddComponent } from './category/category-add/category-add.component';
-
+import { CommentDetailComponent } from './comment/comment-detail/comment-detail.component';
 const routes: Routes = [
+  { path: 'comment-detail/:commentId', component: CommentDetailComponent },
   { path: 'user-list', component: UserListComponent },
   { path: 'comment-add', component: CommentAddComponent },
   { path: 'category-add', component: CategoryAddComponent },

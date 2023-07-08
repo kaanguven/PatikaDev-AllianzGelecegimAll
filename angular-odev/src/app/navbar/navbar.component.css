@@ -1,24 +1,41 @@
-ul {
+/* Reset default styles */
+ul, li {
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+  
+  /* Style for the navigation container */
+  nav {
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  /* Style for the navigation list */
+  nav ul {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
-}
-
-li {
-    padding: 5px 10px;
-    
-}
-
-a, a:hover, a:active  {
-    text-decoration:none;
-    color:black;
-
-}
-
-a:focus {
-    color: red;
-}
+  }
+  
+  /* Style for the navigation list items */
+  nav li {
+    margin-right: 10px;
+  }
+  
+  /* Style for the navigation links */
+  nav a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  /* Style for the active navigation link */
+  nav a.active {
+    font-weight: bold;
+  }
+  
+  /* Style for the navigation link on hover */
+  nav a:hover {
+    background-color: #ddd;
+  }
