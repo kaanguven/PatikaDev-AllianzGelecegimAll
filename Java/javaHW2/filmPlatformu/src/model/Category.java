@@ -20,4 +20,7 @@ public class Category {
     public List<Film> getFilmler() {
         return filmler;
     }
+    public String getAd() {
+        return ad;
+    }
 }

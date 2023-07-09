@@ -1,28 +1,18 @@
 import model.*;
 import java.util.*;
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
 public class Main {
     public static void main(String[] args) {
         List<Platform> platformlar = new ArrayList<>();
-        platformlar.add(new Platform("Amazon Prime"));
-        platformlar.add(new Platform("Netflix"));
-
-        Category categoryAksiyon = new Category("Aksiyon");
-        Category categoryBilimKurgu = new Category("Bilim-Kurgu");
-
-        Film film1 = new Film("Lord Of The Rings", platformlar.get(1), categoryBilimKurgu);
-        Film film2 = new Film("Star Wars", platformlar.get(0), categoryAksiyon);
-
-        platformlar.get(1).filmEkle(film1);
-        platformlar.get(0).filmEkle(film2);
-        categoryBilimKurgu.filmEkle(film1);
-        categoryBilimKurgu.filmEkle(film2);
+        List<Category> kategoriler = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
         boolean devam = true;
 
         while (devam) {
+            if (platformlar.isEmpty()) {
+                System.out.println("Listede hiç film bulunmamakta. Öncelikle film ekleyiniz.");
+            }
             System.out.print("admin veya client olarak giriş yapın (0 to exit): ");
             String kullaniciTipi = scanner.nextLine();
 
@@ -33,6 +23,10 @@ public class Main {
                 String platformAdi = scanner.nextLine();
                 System.out.print("Kategori adı girin: ");
                 String kategoriAdi = scanner.nextLine();
+                System.out.print("Seans sayısını girin: ");
+                int seansSayisi = scanner.nextInt();
+
+                scanner.nextLine();
 
                 Platform platform = null;
                 for (Platform p : platformlar) {
@@ -48,38 +42,47 @@ public class Main {
                 }
 
                 Category kategori = null;
-                if (kategoriAdi.equalsIgnoreCase("Aksiyon")) {
-                    kategori = categoryAksiyon;
-                } else if (kategoriAdi.equalsIgnoreCase("Bilim-Kurgu")) {
-                    kategori = categoryBilimKurgu;
+                for (Category c : kategoriler) {
+                    if (c.getAd().equalsIgnoreCase(kategoriAdi)) {
+                        kategori = c;
+                        break;
+                    }
                 }
 
                 if (kategori == null) {
                     kategori = new Category(kategoriAdi);
-                    if (kategoriAdi.equalsIgnoreCase("Aksiyon")) {
-                        categoryAksiyon = kategori;
-                    } else if (kategoriAdi.equalsIgnoreCase("Bilim-Kurgu")) {
-                        categoryBilimKurgu = kategori;
-                    }
+                    kategoriler.add(kategori);
                 }
 
                 Film yeniFilm = new Film(filmAdi, platform, kategori);
+                yeniFilm.setSeansSayisi(seansSayisi);
+
+                List<String> seansSaatleri = new ArrayList<>();
+                for (int i = 1; i <= seansSayisi; i++) {
+                    System.out.print("Seans " + i + " saatini girin (HH:mm): ");
+                    String saat = scanner.nextLine();
+
+                    yeniFilm.addSeansSaat(saat);
+                }
+
                 platform.filmEkle(yeniFilm);
                 kategori.filmEkle(yeniFilm);
 
                 System.out.println("Film başarıyla eklendi.");
             } else if (kullaniciTipi.equalsIgnoreCase("client")) {
                 System.out.println("Kategoriler:");
-                System.out.println("- Aksiyon");
-                System.out.println("- Bilim-Kurgu");
+                for (Category kategori : kategoriler) {
+                    System.out.println("- " + kategori.getAd());
+                }
                 System.out.print("Bir kategori seçin: ");
                 String secilenKategori = scanner.nextLine();
 
                 Category kategori = null;
-                if (secilenKategori.equalsIgnoreCase("Aksiyon")) {
-                    kategori = categoryAksiyon;
-                } else if (secilenKategori.equalsIgnoreCase("Bilim-Kurgu")) {
-                    kategori = categoryBilimKurgu;
+                for (Category c : kategoriler) {
+                    if (c.getAd().equalsIgnoreCase(secilenKategori)) {
+                        kategori = c;
+                        break;
+                    }
                 }
 
                 if (kategori != null) {
@@ -90,6 +93,11 @@ public class Main {
                     for (Film film : filmler) {
                         System.out.println("Film Adı: " + film.getFilmAdi());
                         System.out.println("Platform: " + film.getPlatform().getPlatformAdi());
+                        System.out.println("Seans Sayısı: " + film.getSeansSayisi());
+                        List<String> seansSaatleri = film.getSeansSaatleri();
+                        for (String saat : seansSaatleri) {
+                            System.out.println("Seans Saati: " + saat);
+                        }
                         System.out.println("--------");
                     }
                 } else {
