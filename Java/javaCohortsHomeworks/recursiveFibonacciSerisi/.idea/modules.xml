@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/recursizeFibonacciSerisi.iml" filepath="$PROJECT_DIR$/recursizeFibonacciSerisi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recursiveFibonacciSerisi.iml" filepath="$PROJECT_DIR$/recursiveFibonacciSerisi.iml" />
     </modules>
   </component>
 </project>
