@@ -27,7 +27,6 @@ export class CategoryAddComponent {
       
     }else{
       this.categoryService.addCategory(newCategory);
-    // Clear the input field after adding the category
       this.categoryName = '';
 
     }
