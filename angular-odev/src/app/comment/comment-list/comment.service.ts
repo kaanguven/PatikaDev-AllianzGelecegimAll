@@ -2070,11 +2070,17 @@ export class CommentService {
       comment_id: this.generateCommentId(),
       post_id: postId,
       comment: commentText,
-      user_id: 0, // Kullanıcı kimliğini burada belirleyebilirsiniz veya uygun bir değer atayabilirsiniz
-      creation_date: new Date().toISOString(), // Yorumun oluşturulma tarihini burada belirleyebilirsiniz veya uygun bir değer atayabilirsiniz
-      is_confirmed: false // Yorumun onay durumunu burada belirleyebilirsiniz veya uygun bir değer atayabilirsiniz
+      user_id: 0, 
+      creation_date: new Date().toISOString(), 
+      is_confirmed: false 
     };
-    this.commentList.push(newComment);
+    if (commentText=="" || postId==0) {
+      alert("Can not add comment without Comment and Post ID")
+      
+    }else{
+      this.commentList.push(newComment);
+
+    }
   }
 
   generateCommentId(): number {

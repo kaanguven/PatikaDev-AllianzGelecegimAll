@@ -21,10 +21,14 @@ export class PostListComponent implements OnInit {
   comments: Comments[] = [];
   categories: Categories[] = [];
   filteredPosts: Posts[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  totalPages!: number;
+  paginatedPosts: Posts[] = [];
   selectedUserId: number | null = null;
   selectedPostId: number | null = null;
   selectedCategoryId: number | null = null;
-  filterOptions = ['userId', 'postId', 'categoryId'];
+  filterOptions = ['All','userId', 'postId', 'categoryId'];
   selectedFilters: string[] = [];
   filterValues: { [key: string]: number | null } = {};
   filterValue: number | null = null;
@@ -39,6 +43,8 @@ export class PostListComponent implements OnInit {
      this.comments = this.commentService.getComments();
      this.categories = this.categoryService.getCategories();
      this.filteredPosts = this.posts; // Tüm gönderileri filtrelenecek gönderilere ata
+     this.totalPages = Math.ceil(this.filteredPosts.length / this.itemsPerPage);
+     this.updatePaginatedPosts();
 
      this.route.queryParams.subscribe((params: Params) => {
       const filters = params['filters'];
@@ -51,6 +57,18 @@ export class PostListComponent implements OnInit {
 
      
  }
+ 
+ updatePaginatedPosts(): void {
+  const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+  const endIndex = startIndex + this.itemsPerPage;
+  this.paginatedPosts = this.filteredPosts.slice(startIndex, endIndex);
+}
+
+onPageChange(pageNumber: number): void {
+  this.currentPage = pageNumber;
+  this.applyFilter(); // Apply the filter before updating paginated posts
+  this.updatePaginatedPosts();
+}
 
  getUserName(userId: number | null): string {
   if (userId === null) {
@@ -93,37 +111,40 @@ filterPosts(filterOptions: string[]): void {
 
 applyFilter(): void {
   let tempFilteredPosts = this.posts;
+  const queryParams: { [key: string]: number | null } = {};
 
-  const queryParams: { [key: string]: number } = {};
+  // Apply userId filter
+  const userIdFilter = this.filterValues['userId'];
+  if (userIdFilter !== null && userIdFilter !== undefined) {
+    tempFilteredPosts = tempFilteredPosts.filter((post) => post.user_id === userIdFilter);
+    queryParams['userId'] = userIdFilter;
+  }
 
-  // Apply categoryId filter separately first
+  // Apply postId filter
+  const postIdFilter = this.filterValues['postId'];
+  if (postIdFilter !== null && postIdFilter !== undefined) {
+    tempFilteredPosts = tempFilteredPosts.filter((post) => post.post_id === postIdFilter);
+    queryParams['postId'] = postIdFilter;
+  }
+
+  // Apply categoryId filter
   const categoryIdFilter = this.filterValues['categoryId'];
   if (categoryIdFilter !== null && categoryIdFilter !== undefined) {
     tempFilteredPosts = tempFilteredPosts.filter((post) => post.category_id === categoryIdFilter);
     queryParams['categoryId'] = categoryIdFilter;
   }
 
-  // Apply other selected filters
-  for (const filter of this.selectedFilters) {
-    if (filter !== 'categoryId') {
-      const filterValue = this.filterValues[filter];
-      if (filterValue !== null && filterValue !== undefined) {
-        switch (filter) {
-          case 'userId':
-            tempFilteredPosts = tempFilteredPosts.filter((post) => post.user_id === filterValue);
-            queryParams['userId'] = filterValue;
-            break;
-          case 'postId':
-            tempFilteredPosts = tempFilteredPosts.filter((post) => post.post_id === filterValue);
-            queryParams['postId'] = filterValue;
-            break;
-          default:
-            break;
-        }
-      }
-    }
-
   this.filteredPosts = tempFilteredPosts;
+
+  // Check if "All" is selected
+  const allSelected = this.selectedFilters.includes('All');
+  if (allSelected) {
+    this.filteredPosts = this.posts;
+    this.filterValues = {};
+    queryParams['userId'] = null;
+    queryParams['postId'] = null;
+    queryParams['categoryId'] = null;
+  }
 
   // Add query parameters to the URL
   this.router.navigate([], {
@@ -131,12 +152,17 @@ applyFilter(): void {
     queryParams: queryParams,
     queryParamsHandling: 'merge'
   });
+
+  this.updatePaginatedPosts();
 }
 
 
 
+
+
+
 }
-}
+
 
 
 

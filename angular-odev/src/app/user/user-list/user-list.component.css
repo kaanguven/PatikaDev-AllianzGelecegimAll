@@ -21,16 +21,17 @@ app-table {
   a {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #4CAF50;
+    background-color: #008080;
     color: white;
     text-decoration: none;
     border-radius: 4px;
-    margin-top: 20px;
+    margin: 20px;
     font-size: 14px;
+    transition: background-color 0.3s ease;
   }
   
   /* Style for the "ADD USER" link on hover */
   a:hover {
-    background-color: #45a049;
+    background-color: #333;
   }
   

@@ -1,13 +1,15 @@
-<app-table [data]="categories" [columns]="['category_id', 'name', 'creation_date', 'Category Details', 'Edit Category']"
-  (editCategoryClicked)="editCategory($event)">
-</app-table>
-
+<app-table
+  [data]="categories"
+  [columns]="['category_id', 'name', 'creation_date', 'Category Details', 'Edit Category', 'Delete Category']"
+  (editCategoryClicked)="editCategory($event)"
+  (deleteCategoryClicked)="deleteCategory($event)"
+></app-table>
 
 
 <div *ngIf="editingCategories">
-  <h3>Edit User</h3>
+  <h3>New Category Name</h3>
   <form (submit)="updateCategory()">
-    <input type="text" [(ngModel)]="editingCategories.name" placeholder="Username" [ngModelOptions]="{ standalone: true }">
+    <input type="text" [(ngModel)]="editingCategories.name" placeholder="New Category Name" [ngModelOptions]="{ standalone: true }">
     <app-button type="submit">Update Category</app-button>
     <app-button type="app-button" (click)="cancelEdit()">Cancel</app-button>
   </form>

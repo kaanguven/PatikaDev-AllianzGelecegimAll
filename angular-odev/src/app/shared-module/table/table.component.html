@@ -23,8 +23,34 @@
         <ng-container *ngIf="column === 'Comment Details'">
           <a [routerLink]="['/comment-detail', item.comment_id]" [queryParams]="{ postId: item.post_id }">Details</a>
         </ng-container>
+
+        <ng-container *ngIf="column === 'Edit User'">
+          <app-button (click)="editUser(item)">Edit USER</app-button>
+        </ng-container>
+
+        <ng-container *ngIf="column === 'Remove User'">
+          <app-button (click)="removeUser(item)">Remove User</app-button>
+        </ng-container>
+
+        <ng-container *ngIf="column === 'Edit Post'">
+          <app-button (click)="editPost(item)">Edit Post</app-button>
+        </ng-container>
         
-      </td>
+        <ng-container *ngIf="column === 'Delete Post'">
+          <app-button (click)="deletePost(item)">Delete Post</app-button>
+        </ng-container>
+
+        <ng-container *ngIf="column === 'Delete Category'">
+          <app-button (click)="deleteCategory(item.category_id)">Delete Category</app-button>
+        </ng-container>
+
+        
+        
+        
+
+
+        
+      </td> 
     </tr>
   </tbody>
 </table>

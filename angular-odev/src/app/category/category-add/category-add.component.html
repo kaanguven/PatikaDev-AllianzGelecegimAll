@@ -1,6 +1,8 @@
-<div>
-    <label for="categoryName">Category Name:</label>
-    <input type="text" id="categoryName" [(ngModel)]="categoryName" />
-  </div>
-  
-  <app-button (click)="addCategory()">Add Category</app-button>
+<div class="container">
+  <label for="categoryName">New Category Name:</label>
+  <input type="text" id="categoryName" [(ngModel)]="categoryName" class="input-field" />
+</div>
+
+<div class="container">
+  <app-button (click)="addCategory()" class="add-button">Add Category</app-button>
+</div>

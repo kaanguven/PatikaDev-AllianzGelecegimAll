@@ -1,18 +1,20 @@
-    <h2>Post Content:</h2>
-    <p>{{ postContent }}</p>
 
-    <h2>category</h2>
-    <p>{{ category }}</p>
-  
-    <h2>Username:</h2>
-    <p>{{ username }}</p>
-  
-    <div>
-        <h2>Comments:</h2>
-        <ul>
-          <li *ngFor="let comment of comments">
-            <p>Comment: {{ comment }}</p>
-          </li>
-        </ul>
-      </div>
+
+  <app-table [data]="combinedPosts" [columns]="['Post Category','Post User','Post Content']"></app-table>
+
+
+  <div class="comment-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Comments That Belong To This Post</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commentObj of postsComment">
+          <td *ngFor="let comment of commentObj['Post Comments']">{{ comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   

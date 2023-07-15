@@ -32,12 +32,37 @@ export class UserAddComponent implements OnInit {
 }
 
 addUser(): void {
-  // Add the new user to the list
-  console.log("new user", this.newUser)
+  // Assign a unique ID to the new user
+  this.newUser.user_id = this.generateUserId();
+  this.newUser.creation_date = new Date().toLocaleString();
+  if (this.newUser.username==null || this.newUser.email==null) {
+    alert("Username / Email areas cannot be empty!")
+    
+  }else {
+    // Add the new user to the list
+  if ( this.newUser.is_active !=true){
+    this.newUser.is_active = false;
+  }
   this.users.push(this.newUser);
 
- 
+  // Reset the newUser object
+  this.newUser = {} as Users;
+  }
+  
+  
 }
+
+
+generateUserId(): number {
+  let maxId = 0;
+  for (const user of this.users) {
+    if (user.user_id > maxId) {
+      maxId = user.user_id;
+    }
+  }
+  return maxId + 1;
+}
+
 
 removeUser(user: Users): void {
   const index = this.users.indexOf(user);
@@ -76,12 +101,18 @@ private checkUserHasComments(userId: number): boolean {
 
 editUser(user: Users): void {
   this.editingUser = { ...user };
+  this.scrollToBottom();
 }
 
 updateUser(): void {
   if (this.editingUser) {
     const index = this.users.findIndex(user => user.user_id === this.editingUser?.user_id);
     if (index !== -1) {
+      if (this.editingUser.username.trim() === '' || this.editingUser.email.trim() === '') {
+        alert('Username and email cannot be empty');
+        return;
+      }
+      
       const updatedUser: Users = {
         ...this.users[index],
         username: this.editingUser.username,
@@ -94,6 +125,9 @@ updateUser(): void {
 }
 
 
+scrollToBottom(): void {
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
 
 cancelEdit(): void {
   this.editingUser = null;

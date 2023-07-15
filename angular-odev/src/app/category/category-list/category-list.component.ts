@@ -35,11 +35,15 @@ export class CategoryListComponent implements OnInit {
     this.editingCategories = { ...category };
   }
   
-  updateCategory(): void {
+    updateCategory(): void {
     if (this.editingCategories) {
       const index = this.categories.findIndex(category => category.category_id === this.editingCategories?.category_id
         );
       if (index !== -1) {
+        if (this.editingCategories.name.trim() === '') {
+          alert('Category name cannot be empty');
+          return;
+        }
         const updatedCategory: Categories = {
           ...this.categories[index],
           name: this.editingCategories.name,
@@ -48,6 +52,14 @@ export class CategoryListComponent implements OnInit {
         this.categories[index] = updatedCategory;
         this.editingCategories = null;
       }
+    }
+  }
+  deleteCategory(categoryId: number): void {
+    const confirmDelete = confirm('Are you sure you want to delete this category?');
+    if (confirmDelete) {
+      this.categoryService.deleteCategory(categoryId);
+      // Optional: You can also delete associated posts if needed
+      // this.postService.deletePostsByCategoryId(categoryId);
     }
   }
   

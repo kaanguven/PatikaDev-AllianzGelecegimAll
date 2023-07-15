@@ -21,6 +21,11 @@ export class PostDetailComponent {
   postContent!: string;
   comments: string[] = []; 
   category!: string
+  posts: { 'Post Category': string }[] = [];
+  postsUser: { 'Post User': string }[] = [];
+  postsComment: { 'Post Comments': string[] }[] = []
+  postsContent: { 'Post Content': string }[] = [];
+  combinedPosts: any[] = [];
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
@@ -39,9 +44,37 @@ export class PostDetailComponent {
       this.postContent = this.postService.getPostContent(this.postId);
       this.comments =this.commentService.getCommentsByPostId(this.postId)
       const categoryId = this.postService.getCategoryId(this.postId);
+      // console.log("CATEGORY",categoryId)
       this.category = this.categoryService.getCategoryName(categoryId);
-      console.log(this.comments)
+      this.posts.push({'Post Category': this.category});
+      this.postsUser.push({'Post User': this.username});
+      this.postsContent.push({'Post Content': this.postContent});
+      for (const comment of this.comments) {
+        this.postsComment.push({ 'Post Comments': [comment] });
+      }
+
+      
+      // Combine the data from posts and postsUser into a single array
+      const combinedData = this.posts.map((post, index) => {
+        const contentObj = this.postsContent[index];
+        const commentObj = this.getAllComments();
+        const userObj = this.postsUser[index];
+        console.log(commentObj)
+        return { ...post, ...contentObj, ...userObj, ...commentObj,'Post Comments': commentObj };
+      });
+      // Assign the combined data to a new property
+      this.combinedPosts = combinedData;
+     
+      // console.log("NAME",this.category)
+      // console.log(this.comments)
     });
   }
-
+  private getAllComments(): string[] {
+    const allComments: string[] = [];
+    for (const commentObj of this.postsComment) {
+      const comments = commentObj['Post Comments'];
+      allComments.push(...comments);
+    }
+    return allComments;
+  }
 }

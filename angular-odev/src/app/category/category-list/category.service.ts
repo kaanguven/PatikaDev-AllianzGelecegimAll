@@ -42,6 +42,16 @@ export class CategoryService {
 
       return this.postService.getPostCountByCategory(categoryId);
     }
+    deleteCategory(categoryId: number): void {
+      // Logic to delete the category with the specified categoryId
+      // You can use the `findIndex` method to find the index of the category to delete
+      const index = this.categoryList.findIndex(category => category.category_id === categoryId);
+    
+      // If the category exists, remove it from the array
+      if (index !== -1) {
+        this.categoryList.splice(index, 1);
+      }
+    }
 
     getCategoryByPostId(postId: number): string {
       const category = this.categoryList.find(category => category.category_id === postId);
@@ -49,7 +59,9 @@ export class CategoryService {
     }
     
     getCategoryName(categoryId: number): string {
-      const category = this.categoryList.find(category => category.category_id === categoryId);
+      //Normalde postların category id'si number geliyor ama biz eklediğimizde string tipinde ekliyoruz. "===" hem tipine hem değerine baktığı için bize boş dönüyor.
+      //Bunun yerine "==" ile sadece değerine bakmayı sağladık.
+      const category = this.categoryList.find(category => category.category_id == categoryId);
       return category ? category.name : '';
     }
 }

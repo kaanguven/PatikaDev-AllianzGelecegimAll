@@ -1,23 +1,51 @@
+<div>
+  <select [(ngModel)]="selectedFilters" multiple>
+    <option *ngFor="let option of filterOptions" [ngValue]="option">
+      {{ option }}
+    </option>
+  </select>
 
-<select [(ngModel)]="selectedFilters" multiple>
-  <option [ngValue]="null">All</option>
-  <option *ngFor="let option of filterOptions" [ngValue]="option">{{ option }}</option>
-</select>
-
-<app-button (click)="applyFilter()">Apply</app-button>
-
-<div *ngFor="let filter of selectedFilters">
-  <div>
-    <label>{{ filter }}</label>
-    <input type="number" [(ngModel)]="filterValues[filter]" [placeholder]="'Enter filter value'">
+  <app-button (click)="applyFilter()">Filter by</app-button>
+  <div *ngFor="let filter of selectedFilters">
+    <input
+      type="number"
+      [(ngModel)]="filterValues[filter]"
+      [placeholder]="[filter]"
+    />
   </div>
 </div>
 
-<app-table [data]="filteredPosts" [columns]="['post_id', 'user_id', 'category_id', 'title','Post Details']"></app-table>
+<app-table
+  [data]="paginatedPosts"
+  [columns]="['post_id', 'user_id', 'category_id', 'title', 'Post Details']"
+></app-table>
 
 <!-- ... -->
 
-<h1><a routerLink="/post-add" routerLinkActive="active" ariaCurrentWhenActive="page">ADD POST</a></h1>
+<div class="pagination">
+  <button
+    [disabled]="currentPage === 1"
+    (click)="onPageChange(currentPage - 1)"
+  >
+    Previous
+  </button>
+  <span>{{ currentPage }} / {{ totalPages }}</span>
+  <button
+    [disabled]="currentPage === totalPages"
+    (click)="onPageChange(currentPage + 1)"
+  >
+    Next
+  </button>
+</div>
+
+<h1>
+  <a
+    routerLink="/post-add"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >ADD POST / EDIT POSTS</a
+  >
+</h1>
 <!-- <ng-container *ngFor="let post of posts">
   <div>{{ post.title }}</div>
   <app-button (click)="showDetails(post.user_id, post.post_id)">Show User ID</app-button>

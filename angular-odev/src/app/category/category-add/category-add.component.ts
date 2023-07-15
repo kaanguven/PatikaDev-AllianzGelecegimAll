@@ -11,6 +11,8 @@ export class CategoryAddComponent {
   constructor(private categoryService: CategoryService) {}
 
   addCategory() {
+
+   
     const currentDate = new Date().toLocaleString();
     const newCategoryId = this.categoryService.getCategories().length + 1;
 
@@ -20,8 +22,15 @@ export class CategoryAddComponent {
       creation_date: currentDate
     };
 
-    this.categoryService.addCategory(newCategory);
+    if (this.categoryName==null) {
+      alert("Category name area can not be empty !")
+      
+    }else{
+      this.categoryService.addCategory(newCategory);
     // Clear the input field after adding the category
-    this.categoryName = '';
+      this.categoryName = '';
+
+    }
+    
   }
 }

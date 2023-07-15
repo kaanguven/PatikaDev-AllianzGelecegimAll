@@ -567,15 +567,28 @@ export class PostService {
    }
 
    addPost(post: Posts): void {
-    post.post_id = this.generatePostId()
-    this.postList.push(post);
+    if (post.title=="" || post.content=="") {
+      alert("Content and Title areas must be filled !");
+      
+    }else{
+      post.post_id = this.generatePostId()
+      this.postList.push(post);
+
+    }
+    
+  }
+
+  getAllPostIds(): number[] {
+    return this.postList.map(post => post.post_id);
   }
 
   updatePost(post: Posts): void {
     const index = this.postList.findIndex(p => p.post_id === post.post_id);
     if (index !== -1) {
-      // Add validation or other logic before updating the post
       this.postList[index] = post;
+      console.log(post)
+
+      
     }
   }
 

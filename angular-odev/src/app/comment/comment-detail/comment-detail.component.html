@@ -1,5 +1,1 @@
-<h1>Comment Detail</h1>
-<p>Comment ID: {{ commentId }}</p>
-<p>User ID: {{ userId }}</p>
-<p *ngIf="userName">User Name: {{ userName }}</p>
-<p *ngIf="!userName">UserName not found</p>
+<app-table [data]="commentData" [columns]="['Comment ID', 'User ID', 'User Name']"></app-table>

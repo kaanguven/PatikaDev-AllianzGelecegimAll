@@ -1,48 +1,39 @@
+<app-table [data]="users" [columns]="['username', 'email', 'Edit User', 'Remove User']" (editUserClicked)="editUser($event)" (removeUserClicked)="removeUser($event)">
+  <ng-template let-item>
+    <td>{{ item.username }}</td>
+    <td>{{ item.email }}</td>
+    <td>
+      <app-button (click)="removeUser(item)">Remove</app-button>
+    </td>
+    <td>
+      <app-button (click)="editUser(item)">Edit User</app-button>
+    </td>
+  </ng-template>
+</app-table>
 
-<div>
 
-    <ul>
-        <li *ngFor="let user of users">
-          {{ user.username }} - {{ user.email }}
-        </li>
-      </ul>
-    
-
+<div class="container">
+  <h3>Add New User</h3>
+  <form class="add-user-form" (submit)="addUser()">
+    <input type="text" [(ngModel)]="newUser.username" placeholder="Username" class="input-field" [ngModelOptions]="{ standalone: true }">
+    <input type="email" [(ngModel)]="newUser.email" placeholder="Email" class="input-field" [ngModelOptions]="{ standalone: true }">
+    <div class="checkbox-label">
+      <input type="checkbox" [(ngModel)]="newUser.is_active" [ngModelOptions]="{ standalone: true }">
+      <span>Active (default false)</span>
+    </div>
+    <app-button type="submit" class="add-button">Add User</app-button>
+  </form>
 </div>
 
-<form (submit)="addUser()">
-    <input type="text" [(ngModel)]="newUser.username" placeholder="Username" [ngModelOptions]="{ standalone: true }">
-    <input type="number" [(ngModel)]="newUser.user_id" placeholder="User ID" [ngModelOptions]="{ standalone: true }">
-    <input type="email" [(ngModel)]="newUser.email" placeholder="Email" [ngModelOptions]="{ standalone: true }">
-    <input type="text" [(ngModel)]="newUser.creation_date" placeholder="Creation Date" [ngModelOptions]="{ standalone: true }">
-    <input type="checkbox" [(ngModel)]="newUser.is_active" [ngModelOptions]="{ standalone: true }">
-    <app-button type="submit">Add User</app-button>
-  </form>
-  
-  
-  <ul>
-    <li *ngFor="let user of users">
-      {{ user.username }}
-      <app-button (click)="removeUser(user)">Remove</app-button>
-      <app-button (click)="editUser(user)">Edit User</app-button>  
 
-    </li>
-  </ul>
-
-  <!-- <div *ngFor="let user of users">
-    <div *ngIf="checkAssociatedData(user)">
-      var
-      <p>{{ user.user_id }}</p>
-      <p>{{ user.email }}</p>
-    </div>
-  </div> -->
-
-  <div *ngIf="editingUser">
-    <h3>Edit User</h3>
-    <form (submit)="updateUser()">
-      <input type="text" [(ngModel)]="editingUser.username" placeholder="Username" [ngModelOptions]="{ standalone: true }">
-      <input type="email" [(ngModel)]="editingUser.email" placeholder="Email" [ngModelOptions]="{ standalone: true }">
+<div *ngIf="editingUser" class="editing-user">
+  <h3>Edit User</h3>
+  <form (submit)="updateUser()">
+    <input type="text" [(ngModel)]="editingUser.username" placeholder="Username" [ngModelOptions]="{ standalone: true }">
+    <input type="email" [(ngModel)]="editingUser.email" placeholder="Email" [ngModelOptions]="{ standalone: true }">
+    <div class="button-container">
       <app-button type="submit">Update User</app-button>
-      <app-button type="app-button" (click)="cancelEdit()">Cancel</app-button>
-    </form>
-  </div>
+      <app-button type="button" (click)="cancelEdit()">Cancel</app-button>
+    </div>
+  </form>
+</div>

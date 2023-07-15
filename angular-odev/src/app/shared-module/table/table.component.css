@@ -1,25 +1,94 @@
+/* Style for the table container */
+.table-container {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 /* Style for the table */
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Style for the table header */
+thead th {
+  background-color: #008080;
+  color: #fff;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style for the table body */
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style for alternating rows */
+tbody tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+/* Style for links */
+a {
+  color: #008080;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Style for buttons */
+.app-button {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #008080;
+}
+
+.app-button:hover {
+  background-color: #006666;
+}
+
+.app-button:active,
+.app-button:focus {
+  background-color: #006666;
+  outline: none;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  .table-container {
+    border-width: 1px;
+    border-radius: 4px;
   }
   
-  /* Style for the table header */
-  thead th {
-    background-color: #f2f2f2;
-    padding: 10px;
-    text-align: left;
-    font-weight: bold;
+  table {
+    font-size: 14px;
   }
   
-  /* Style for the table body */
+  thead th,
   tbody td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    padding: 8px;
   }
   
-  /* Style for alternating rows */
-  tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+  .app-button {
+    font-size: 12px;
+    padding: 4px 8px;
   }
-  
+}

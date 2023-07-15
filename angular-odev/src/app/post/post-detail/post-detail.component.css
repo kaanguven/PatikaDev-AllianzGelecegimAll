@@ -1,28 +1,109 @@
 /* Styles for headings */
 h2 {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Styles for paragraphs */
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Styles for the comments section */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.comment-table {
+  border: 2px solid #ddd;
+  overflow: hidden;
+}
+
+.comment-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.comment-table thead th {
+  background-color: #008080;
+  color: #fff;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-table tbody tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.comment-table a {
+  color: #008080;
+  text-decoration: none;
+}
+
+.comment-table a:hover {
+  text-decoration: underline;
+}
+
+.comment-table .app-button {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #008080;
+}
+
+.comment-table .app-button:hover {
+  background-color: #006666;
+}
+
+.comment-table .app-button:active,
+.comment-table .app-button:focus {
+  background-color: #006666;
+  outline: none;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  .comment-table {
+    border-width: 1px;
+    border-radius: 4px;
   }
   
-  /* Styles for paragraphs */
-  p {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  /* Styles for the comments section */
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    margin-bottom: 10px;
-  }
-  
-  /* Styles for comment paragraphs */
-  li p {
+  .comment-table table {
     font-size: 14px;
-    margin-bottom: 5px;
   }
   
+  .comment-table thead th,
+  .comment-table tbody td {
+    padding: 8px;
+  }
+  
+  .comment-table .app-button {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}

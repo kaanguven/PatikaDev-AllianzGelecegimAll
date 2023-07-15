@@ -1,84 +1,123 @@
-<h2>Add New Post</h2>
-<div>
-  <ul>
-    <li *ngFor="let post of posts">
-      {{ post.post_id }} - {{ post.title }}
-    </li>
-  </ul>
+<h2>Add / Edit Post</h2>
+
+<div class="top-button-container">
+  <app-button class="top-button" (click)="scrollToBottom()">Add New User</app-button>
 </div>
 
-<form (ngSubmit)="addPost()">
-  <div>
-    <label>Title:</label>
-    <input type="text" [(ngModel)]="newPost.title" name="title" required>
+
+
+<app-table
+  [data]="paginatedPosts"
+  [columns]="['title', 'content', 'Edit Post', 'Delete Post']"
+  (editPostClicked)="editPost($event)"
+  (deletePostClicked)="deletePost($event)"
+>
+  <ng-template let-item>
+    <td>{{ item.title }}</td>
+    <td>{{ item.content }}</td>
+    <td>
+      <app-button (click)="editPost(item)">Edit Post</app-button>
+    </td>
+    <td>
+      <app-button (click)="deletePost(item)">Remove</app-button>
+    </td>
+  </ng-template>
+</app-table>
+
+<div class="pagination">
+  <button
+    [disabled]="currentPage === 1"
+    (click)="onPageChange(currentPage - 1)"
+  >
+    Previous
+  </button>
+  <span>{{ currentPage }} / {{ totalPages }}</span>
+  <button
+    [disabled]="currentPage === totalPages"
+    (click)="onPageChange(currentPage + 1)"
+  >
+    Next
+  </button>
+</div>
+
+<div *ngIf="isEditing">
+  <h2>Edit Post</h2>
+  <form class="edit-post-form">
+    <!-- Edit form fields -->
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text" [(ngModel)]="updatedPost.title" name="title" required />
+    </div>
+    <div class="form-group">
+      <label>Content:</label>
+      <textarea [(ngModel)]="updatedPost.content" name="content" required></textarea>
+    </div>
+    <div class="form-group">
+      <label>User:</label>
+      <select [(ngModel)]="updatedPost.user_id" name="user_id" required>
+        <option *ngFor="let user of users" [value]="user.user_id">{{ user.username }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Category:</label>
+      <select [(ngModel)]="updatedPost.category_id" name="category_id" required>
+        <option *ngFor="let category of categories" [value]="category.category_id">{{ category.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Creation Date:</label>
+      <span>{{ getCurrentDate() }}</span>
+    </div>
+    <div class="form-group">
+      <label>Published:</label>
+      <input type="checkbox" [(ngModel)]="updatedPost.is_published" name="is_published" />
+    </div>
+    <!-- ... -->
+    <div class="button-container">
+      <app-button type="button" (click)="updatePost()">Update Post</app-button>
+      <app-button type="button" (click)="cancelEdit()">Cancel</app-button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+      
+<form class="add-post-form" >
+  <div class="form-group">
+    <label>New Post Title:</label>
+    <input type="text" [(ngModel)]="newPost.title" name="title" required />
   </div>
-  <div>
-    <label>Content:</label>
+  <div class="form-group">
+    <label>New Post Content:</label>
     <textarea [(ngModel)]="newPost.content" name="content" required></textarea>
   </div>
-  <div>
+  <div class="form-group">
     <label>User:</label>
     <select [(ngModel)]="newPost.user_id" name="user_id" required>
       <option *ngFor="let user of users" [value]="user.user_id">{{ user.username }}</option>
     </select>
   </div>
-  <div>
+  <div class="form-group">
     <label>Category:</label>
-    <input type="number" [(ngModel)]="newPost.category_id" name="category_id" required>
+    <select [(ngModel)]="newPost.category_id" name="category_id" required>
+      <option *ngFor="let category of categories" [value]="category.category_id">{{ category.name }}</option>
+    </select>
   </div>
-  <div>
+  <div class="form-group">
     <label>Creation Date:</label>
     <span>{{ getCurrentDate() }}</span>
   </div>
-  <div>
+  <div class="form-group">
     <label>Published:</label>
-    <input type="checkbox" [(ngModel)]="newPost.is_published" name="is_published">
+    <input type="checkbox" [(ngModel)]="newPost.is_published" name="is_published" />
   </div>
-  <div>
-    <app-button type="submit">Add Post</app-button>
-    
+  <div class="button-container">
+    <app-button type="submit" (click)="addPost()">Add Post</app-button>
+    <app-button type="button" (click)="resetForm()">Reset</app-button>
   </div>
 </form>
-<app-button type="app-button" (click)="resetForm()">Reset</app-button>
-<ng-container *ngFor="let post of posts">
-  <div>
-    <h3>{{ post.title }}</h3>
-    <p>{{ post.content }}</p>
-    <app-button (click)="editPost(post.post_id)">Edit</app-button>
-    <app-button (click)="deletePost(post.post_id)">Delete</app-button>
-  </div>
-  <div *ngIf="selectedPostId === post.post_id">
-    <form (submit)="updatePost(post)">
-      <div>
-        <label>Title:</label>
-        <input type="text" [(ngModel)]="post.title" name="title" required>
-      </div>
-      <div>
-        <label>Content:</label>
-        <textarea [(ngModel)]="post.content" name="content" required></textarea>
-      </div>
-      <div>
-        <label>User:</label>
-        <select [(ngModel)]="post.user_id" name="user_id" required>
-          <option *ngFor="let user of users" [value]="user.user_id">{{ user.username }}</option>
-        </select>
-      </div>
-      <div>
-        <label>Category:</label>
-        <input type="number" [(ngModel)]="post.category_id" name="category_id" required>
-      </div>
-      <div>
-        <label>Creation Date:</label>
-        <input type="text" [(ngModel)]="post.creation_date" name="creation_date" required>
-      </div>
-      <div>
-        <label>Published:</label>
-        <input type="checkbox" [(ngModel)]="post.is_published" name="is_published">
-      </div>
-      <div>
-        <app-button type="submit">Update</app-button>
-        <app-button type="app-button" (click)="cancelEdit()">Cancel</app-button>
-      </div>
-    </form>
-  </div>
-  <hr>
+
+
