@@ -11,25 +11,21 @@ export class CategoryAddComponent {
   constructor(private categoryService: CategoryService) {}
 
   addCategory() {
-
-   
-    const currentDate = new Date().toLocaleString();
-    const newCategoryId = this.categoryService.getCategories().length + 1;
-
-    const newCategory = {
-      category_id: newCategoryId,
-      name: this.categoryName,
-      creation_date: currentDate
-    };
-
-    if (this.categoryName==null) {
-      alert("Category name area can not be empty !")
-      
-    }else{
+    if (this.categoryName === '' || this.categoryName == null) {
+      alert("Category name cannot be empty!");
+    } else {
+      const currentDate = new Date().toLocaleString();
+      const newCategoryId = this.categoryService.getCategories().length + 1;
+  
+      const newCategory = {
+        category_id: newCategoryId,
+        name: this.categoryName,
+        creation_date: currentDate
+      };
+  
       this.categoryService.addCategory(newCategory);
       this.categoryName = '';
-
     }
-    
   }
+  
 }
