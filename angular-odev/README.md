@@ -1,27 +1,45 @@
-# AngularOdev
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+# Blog Yönetim Sistemi
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Bu proje, Angular kullanılarak geliştirilen bir blog yönetim sistemi sunmaktadır. Kullanıcılar, gönderiler, kategoriler ve yorumlar gibi temel bileşenlerle etkileşime geçebilir ve bu bileşenleri yönetebilirler.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Özellikler
 
-## Build
+- **Kullanıcı Listeleme**: Bu sayfa sayesinde tüm kullanıcıları görüntüleyebilirsiniz. Ayrıca yeni kullanıcılar ekleyebilir, mevcut kullanıcıları düzenleyebilir ve silebilirsiniz.
+- **Gönderi Listeleme**: Bu sayfa, tüm gönderileri görüntüleyen bir liste sunar. Gönderi detaylarına ayrı bir sayfadan erişebilirsiniz. Gönderileri düzenleyebilir, silebilir ve yeni gönderiler ekleyebilirsiniz.
+- **Kategori Listeleme**: Bu sayfada tüm kategorileri listeleyebilirsiniz. Ayrıntılı bilgilere ulaşmak için kategori detaylarına erişebilirsiniz. Ayrıca yeni kategoriler ekleyebilir ve mevcut kategorileri düzenleyebilirsiniz.
+- **Yorum Listeleme**: Bu sayfada tüm yorumları listeleyebilirsiniz. Yeni yorumlar ekleyebilir ve mevcut yorumları silebilirsiniz.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Kurulum
 
-## Running unit tests
+1. Projeyi yerel makinenize kopyalayın.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Terminali açın ve proje dizinine gidin:
 
-## Running end-to-end tests
+3.  Gerekli bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+`npm install` 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4.  Projeyi başlatmak için aşağıdaki komutu çalıştırın:
+
+
+`ng serve`
+
+## Kullanılan Teknolojiler
+
+-   Angular
+-   HTML
+-   CSS
+-   TypeScript
+
+## Servisler
+
+Bu proje aşağıdaki servisleri kullanmaktadır:
+
+-   **UserService**: Kullanıcılarla ilgili işlemleri gerçekleştirmek için kullanılır.
+-   **PostService**: Gönderilerle ilgili işlemleri gerçekleştirmek için kullanılır.
+-   **CategoryService**: Kategorilerle ilgili işlemleri gerçekleştirmek için kullanılır.
+-   **CommentService**: Yorumlarla ilgili işlemleri gerçekleştirmek için kullanılır.
