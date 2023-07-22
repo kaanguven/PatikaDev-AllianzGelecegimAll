@@ -36,7 +36,7 @@ public class CourseGrade {
     }
 
     public void setCourseDepartment(String courseDepartment) {
-        if (courseDepartment != null && courseDepartment.length() == 4) {
+        if (courseDepartment != null && courseDepartment.length() <= 4) {
             this.courseDepartment = courseDepartment;
         } else {
             this.courseDepartment = "CENG";

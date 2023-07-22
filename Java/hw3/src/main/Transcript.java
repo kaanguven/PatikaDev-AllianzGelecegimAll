@@ -33,20 +33,28 @@ public class Transcript {
         }
 
         if (totalCredits > 0) {
-            GPA = Math.round((totalPoints / totalCredits));
+            GPA = (totalPoints / totalCredits);
         } else {
             GPA = 0.0;
         }
     }
 
+    public int getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
     @Override
     public String toString() {
-        StringBuilder transcript = new StringBuilder();
-        transcript.append("Student ID: ").append(studentID).append("\n");
+        String str = "Student ID: " + this.studentID + "\n";
+
         for (CourseGrade courseGrade : courseGrades) {
-            transcript.append(courseGrade).append("\n");
+            str += courseGrade + "\n";
         }
-        transcript.append("GPA: ").append(GPA);
-        return transcript.toString();
+
+        return str + "GPA: " + this.GPA;
     }
 }
