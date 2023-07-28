@@ -1,11 +1,11 @@
 package model;
 
-public class SpecialPower {
+public class Power {
     private String name;
     private int extraDamage;
     private int remainingRights;
 
-    public SpecialPower(String name, int extraDamage, int remainingRights) {
+    public Power(String name, int extraDamage, int remainingRights) {
         this.name = name;
         this.extraDamage = extraDamage;
         this.remainingRights = remainingRights;
@@ -15,16 +15,8 @@ public class SpecialPower {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getExtraDamage() {
         return extraDamage;
-    }
-
-    public void setExtraDamage(int extraDamage) {
-        this.extraDamage = extraDamage;
     }
 
     public int getRemainingRights() {
@@ -37,7 +29,7 @@ public class SpecialPower {
 
     @Override
     public String toString() {
-        return "SpecialPower{" +
+        return "Power{" +
                 "name='" + name + '\'' +
                 ", extraDamage=" + extraDamage +
                 ", remainingRights=" + remainingRights +

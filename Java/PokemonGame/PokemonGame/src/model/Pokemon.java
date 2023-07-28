@@ -1,18 +1,26 @@
 package model;
 
+import model.ElementEnum;
+
+
 public class Pokemon {
     private String name;
     private int health;
     private int damage;
-    private TypeEnum type;
-    private SpecialPower specialPower;
+    private ElementEnum element;
+    private Power power;
 
-    public Pokemon(String name, int health, int damage, TypeEnum type, SpecialPower specialPower) {
+    private int maxHealth;
+    private boolean isSelected = false;
+    private boolean isPlaying = false;
+
+    public Pokemon(String name, int health, int damage, ElementEnum element, Power power,int maxHealth) {
         this.name = name;
         this.health = health;
         this.damage = damage;
-        this.type = type;
-        this.specialPower = specialPower;
+        this.element = element;
+        this.power = power;
+        this.maxHealth = maxHealth;
     }
 
     public String getName() {
@@ -27,6 +35,15 @@ public class Pokemon {
         return health;
     }
 
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public void setHealth(int health) {
         this.health = health;
     }
@@ -35,34 +52,32 @@ public class Pokemon {
         return damage;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
+    public ElementEnum getElement() {
+        return element;
     }
 
-    public TypeEnum getType() {
-        return type;
+    public Power getPower() {
+        return power;
     }
 
-    public void setType(TypeEnum type) {
-        this.type = type;
+    public void setPower(Power power) {
+        this.power = power;
     }
 
-    public SpecialPower getSpecialPower() {
-        return specialPower;
+    public boolean isSelected() {
+        return isSelected;
     }
 
-    public void setSpecialPower(SpecialPower specialPower) {
-        this.specialPower = specialPower;
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 
-    public int specialAttack() {
-        if (getSpecialPower().getRemainingRights() > 0) {
-            this.specialPower.setRemainingRights(this.specialPower.getRemainingRights() - 1);
-            return this.damage + this.getSpecialPower().getExtraDamage();
-        } else {
-            System.out.println("You can not use special power!");
-            return 0;
-        }
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setPlaying(boolean playing) {
+        isPlaying = playing;
     }
 
     @Override
@@ -71,7 +86,8 @@ public class Pokemon {
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", damage=" + damage +
-                ", type=" + type +
+                ", element=" + element +
+                ", power=" + power +
                 '}';
     }
 }

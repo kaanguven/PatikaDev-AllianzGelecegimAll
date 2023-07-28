@@ -4,14 +4,8 @@ import java.util.ArrayList;
 
 public class Player {
     private String name;
-    private Character character;
+    private BaseCharacter character;
     private boolean isWinner;
-
-
-    public Player(String name, Character character) {
-        this.name = name;
-        this.character = character;
-    }
 
     public String getName() {
         return name;
@@ -21,29 +15,27 @@ public class Player {
         this.name = name;
     }
 
-    public Character getCharacter() {
+    public BaseCharacter getCharacter() {
         return character;
     }
 
-    public void setCharacter(Character character) {
+    public void setCharacter(BaseCharacter character) {
         this.character = character;
-    }
-
-    public boolean isWinner() {
-        return isWinner;
     }
 
     public void setWinner(boolean winner) {
         isWinner = winner;
     }
 
+    private ArrayList<Pokemon> originalPokemonList;
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", character=" + character +
-                ", isWinner=" + isWinner +
-                '}';
+    public ArrayList<Pokemon> getOriginalPokemonList() {
+        return originalPokemonList;
     }
+
+    public void setOriginalPokemonList(ArrayList<Pokemon> originalPokemonList) {
+        this.originalPokemonList = originalPokemonList;
+    }
+
+
 }

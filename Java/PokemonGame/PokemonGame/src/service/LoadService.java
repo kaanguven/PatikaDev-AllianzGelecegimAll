@@ -1,42 +1,46 @@
 package service;
 
 import model.*;
-import model.Character;
+
 
 import java.util.ArrayList;
 
 public class LoadService {
-    public ArrayList<Character> loadCharacters(){
-        SpecialPower strategy1 = new Strategy("Strategy", 4, 1);
-        SpecialPower strategy2 = new Strategy("Strategy II", 3, 1);
 
-        Character ash = new Ash("Ash", strategy1);
-        Character brooke = new Brooke("Brooke", strategy2);
+    public ArrayList<BaseCharacter> loadCharacters() {
+        ArrayList<BaseCharacter> characters = new ArrayList<>();
+        BaseCharacter ash = new Ash();
+        BaseCharacter brock = new Brock();
+        BaseCharacter james = new James();
+        BaseCharacter lucas = new Lucas();
 
-        ArrayList<Character> characterList = new ArrayList<>();
-        characterList.add(ash);
-        characterList.add(brooke);
-        return characterList;
+        characters.add(ash);
+        characters.add(brock);
+        characters.add(james);
+        characters.add(lucas);
+
+        return characters;
     }
 
-    public ArrayList<Pokemon> loadPokemons(){
-        SpecialPower electricty = new Electricty("Electricty", 3, 3);
-        SpecialPower water = new Water("Water", 1, 3);
-        SpecialPower fire = new Fire("Fire", 5, 3);
-        SpecialPower earth = new Earth("Earth", 4, 3);
 
-        Pokemon pokemon1 = new Pikachu("Pikachu", 100, 10, TypeEnum.ELECTRICY, electricty);
-        Pokemon pokemon2 = new Sqiurtle("Squirtle", 15, 8, TypeEnum.WATER, water);
-        Pokemon pokemon3 = new Charmander("Charmender", 90, 12, TypeEnum.FIRE, fire);
-        Pokemon pokemon4 = new Balbausar("Balbausar", 140, 7, TypeEnum.EARTH, earth);
+    public ArrayList<Pokemon> loadPokemons() {
+        ArrayList<Pokemon> pokemons = new ArrayList<>();
+        Pokemon pikachu = new Pikachu();
+        Pokemon charizard = new Charizard();
+        Pokemon pidgey = new Spearow();
+        Pokemon bulbasaur = new Bulbasaur();
+        Pokemon sandslash = new Sandslash();
+        Pokemon squirtle = new Squirtle();
 
-        ArrayList<Pokemon> pokemonList = new ArrayList<>();
-        pokemonList.add(pokemon1);
-        pokemonList.add(pokemon2);
-        pokemonList.add(pokemon3);
-        pokemonList.add(pokemon4);
+        pokemons.add(pikachu);
+        pokemons.add(charizard);
+        pokemons.add(pidgey);
+        pokemons.add(bulbasaur);
+        pokemons.add(sandslash);
+        pokemons.add(squirtle);
 
-        return pokemonList;
+        return pokemons;
     }
+
 
 }
