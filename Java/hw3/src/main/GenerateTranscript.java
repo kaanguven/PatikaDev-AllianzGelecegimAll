@@ -68,10 +68,8 @@ public class GenerateTranscript {
                 int courseCredit = Integer.parseInt(courseInfo[2]);
                 double gradeValue = Double.parseDouble(courseInfo[3]);
 
-                Grade grade = Grade.A; // Default grade, will be updated based on the value read
-                grade.setGradeTaken(gradeValue);
-
-                CourseGrade courseGrade = new CourseGrade(department, courseCode, courseCredit, grade);
+                CourseGrade courseGrade = new CourseGrade(department, courseCode, courseCredit);
+                courseGrade.setGradeTaken(gradeValue);
                 transcript.addCourseTaken(courseGrade);
             }
 

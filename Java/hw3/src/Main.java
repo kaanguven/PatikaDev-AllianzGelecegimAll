@@ -35,12 +35,12 @@ public class Main {
         // Displaying the transcript
         System.out.println(transcript);
 
-        GenerateTranscript transcript3 = new GenerateTranscript();
-        transcript3.takeInputFromUser();
 
+        GenerateTranscript transcriptTest = new GenerateTranscript();
+        transcriptTest.takeInputFromUser();
 
-        // GenerateTranscript.takeInputFromFile(); // There is a test.txt in directory to test this function.
-
-    }
+        //GenerateTranscript.takeInputFromFile(); // There is a test.txt in directory to test this function.
 
     }
+
+}
