@@ -26,4 +26,6 @@ public enum Grade {
         return "Grade " + stringValue + " corresponds to numeric grade " + numericValue;
     }
 
+    public void setGradeTaken(double gradeValue) {
+    }
 }

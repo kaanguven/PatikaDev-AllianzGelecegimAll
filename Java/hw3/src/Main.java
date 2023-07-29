@@ -1,4 +1,5 @@
 import main.CourseGrade;
+import main.GenerateTranscript;
 import main.Transcript;
 import util.Grade;
 import util.GradeTest;
@@ -10,8 +11,8 @@ public class Main {
 
         CourseGrade course1 = new CourseGrade(null, 201, 5, Grade.A); // Fail test
         CourseGrade course2 = new CourseGrade("COMP", 101, 3, Grade.B);
-        CourseGrade course3 = new CourseGrade("MATH", 301, 5, Grade.C);
-        CourseGrade course4 = new CourseGrade("ME", 401, 4, Grade.D);
+        CourseGrade course3 = new CourseGrade("MATH", 301, 5, Grade.D);
+        CourseGrade course4 = new CourseGrade("ME", 401, 4, Grade.C);
         CourseGrade course5 = new CourseGrade("FUNDENG", 600, 3, Grade.F); // Fail test
 
         // Display CourseGrade objects using toString()
@@ -33,6 +34,13 @@ public class Main {
 
         // Displaying the transcript
         System.out.println(transcript);
+
+        GenerateTranscript transcript3 = new GenerateTranscript();
+        transcript3.takeInputFromUser();
+
+
+        // GenerateTranscript.takeInputFromFile(); // There is a test.txt in directory to test this function.
+
     }
 
     }
