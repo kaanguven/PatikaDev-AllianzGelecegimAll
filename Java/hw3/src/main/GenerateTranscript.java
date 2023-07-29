@@ -10,6 +10,7 @@ public class GenerateTranscript {
     public static void takeInputFromUser() {
         Scanner scanner = new Scanner(System.in);
 
+
         System.out.print("Enter Student ID: ");
         int studentID = scanner.nextInt();
         scanner.nextLine();
@@ -24,13 +25,31 @@ public class GenerateTranscript {
                 break;
             }
 
-            System.out.print("Enter Course Code: ");
-            int courseCode = scanner.nextInt();
-            scanner.nextLine();
+            int courseCode;
+            while (true) {
+                System.out.print("Enter Course Code (between 100 and 599): ");
+                courseCode = scanner.nextInt();
+                scanner.nextLine();
 
-            System.out.print("Enter Credit: ");
-            int courseCredit = scanner.nextInt();
-            scanner.nextLine();
+                if (courseCode >= 100 && courseCode <= 599) {
+                    break;
+                } else {
+                    System.out.println("Invalid course code. Please enter a value between 100 and 599.");
+                }
+            }
+
+            int courseCredit;
+            while (true) {
+                System.out.print("Enter Credit (3 or 4): ");
+                courseCredit = scanner.nextInt();
+                scanner.nextLine();
+
+                if (courseCredit == 3 || courseCredit == 4) {
+                    break;
+                } else {
+                    System.out.println("Invalid credit value. Please enter either 3 or 4.");
+                }
+            }
 
             System.out.print("Enter Grade: ");
             double gradeValue = scanner.nextDouble();
